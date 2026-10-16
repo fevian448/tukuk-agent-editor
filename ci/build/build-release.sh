@@ -36,14 +36,14 @@ main() {
   rsync ./lib/vscode/ThirdPartyNotices.txt "$RELEASE_PATH"
 
   if [ "$KEEP_MODULES" = 1 ]; then
-    # Copy the code-server launcher.
+    # Copy the Tukuk Agent launcher (rebranded from code-server's bin/code-server).
     mkdir -p "$RELEASE_PATH/bin"
-    rsync ./ci/build/code-server.sh "$RELEASE_PATH/bin/code-server"
-    chmod 755 "$RELEASE_PATH/bin/code-server"
+    rsync ./ci/build/code-server.sh "$RELEASE_PATH/bin/tukuk-agent"
+    chmod 755 "$RELEASE_PATH/bin/tukuk-agent"
 
     # Windows cannot run the shell launcher, so it gets one of its own.
     if [ "$OS" = windows ]; then
-      rsync ./ci/build/code-server.cmd "$RELEASE_PATH/bin/code-server.cmd"
+      rsync ./ci/build/code-server.cmd "$RELEASE_PATH/bin/tukuk-agent.cmd"
     fi
 
     # Delete the extra bin scripts.
