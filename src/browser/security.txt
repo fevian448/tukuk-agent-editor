@@ -1,6 +1,4 @@
-Contact: mailto:security@coder.com
-Acknowledgments: https://coder.com/security/thanks
-Preferred-Languages: en-US
-Canonical: https://coder.com/.well-known/security.txt
-Policy: https://coder.com/security/policy
-Hiring: https://coder.com/careers
+Contact: mailto:admin@tukuk.org
+Preferred-Languages: en-US, ms
+Canonical: https://tukuk.org/.well-known/security.txt
+Policy: https://tukuk.org/privacy

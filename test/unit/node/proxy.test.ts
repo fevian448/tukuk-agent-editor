@@ -318,7 +318,7 @@ describe("proxy", () => {
       const right = cookies.slice(i)
       const resp = await codeServer.fetch(proxyPath + "/cookies", {
         headers: {
-          cookie: [...left, `code-server-session=${token}`, ...right].join("; "),
+          cookie: [...left, `tukuk-agent-session=${token}`, ...right].join("; "),
         },
       })
       expect(resp.status).toBe(200)

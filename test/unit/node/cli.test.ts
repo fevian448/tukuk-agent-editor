@@ -1017,11 +1017,11 @@ describe("defaultSessionSocket", () => {
   const dataDir = path.join("/home/coder/.local/share", "code-server")
 
   it("should put the socket in the user data directory", () => {
-    expect(defaultSessionSocket(dataDir, "linux")).toBe(path.join(dataDir, "code-server-ipc.sock"))
+    expect(defaultSessionSocket(dataDir, "linux")).toBe(path.join(dataDir, "tukuk-agent-ipc.sock"))
   })
 
   it("should use a named pipe on windows", () => {
-    expect(defaultSessionSocket(dataDir, "win32")).toMatch(/^\\\\\.\\pipe\\code-server-ipc-[0-9a-f]{16}$/)
+    expect(defaultSessionSocket(dataDir, "win32")).toMatch(/^\\\\\.\\pipe\\tukuk-agent-ipc-[0-9a-f]{16}$/)
   })
 
   it("should give separate data directories separate pipes", () => {

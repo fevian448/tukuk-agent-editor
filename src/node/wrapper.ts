@@ -248,10 +248,10 @@ export class ParentProcess extends Process {
     const opts = {
       size: "10M",
       maxFiles: 10,
-      path: path.join(paths.data, "coder-logs"),
+      path: path.join(paths.data, "tukuk-agent-logs"),
     }
-    this.logStdoutStream = rfs.createStream("code-server-stdout.log", opts)
-    this.logStderrStream = rfs.createStream("code-server-stderr.log", opts)
+    this.logStdoutStream = rfs.createStream("tukuk-agent-stdout.log", opts)
+    this.logStderrStream = rfs.createStream("tukuk-agent-stderr.log", opts)
 
     this.onDispose(() => this.disposeChild())
 

@@ -172,7 +172,7 @@ export const options: Options<Required<UserProvidedArgs>> = {
   "disable-update-check": {
     type: "boolean",
     description:
-      "Disable update check. Without this flag, code-server checks every 6 hours against the latest github release and \n" +
+      "Disable update check. Without this flag, Tukuk Agent checks every 6 hours against the latest github release and \n" +
       "then notifies you once every week that a new release is available.",
   },
   "session-socket": {
@@ -339,7 +339,7 @@ export const options: Options<Required<UserProvidedArgs>> = {
     description:
       "Pass an option straight through to the VS Code server as flag=value, or as a bare flag for a \n" +
       "boolean. Repeatable; repeating the same flag builds an array. Use this to reach VS Code options \n" +
-      "code-server does not model itself, e.g. --vscode-option enable-sandbox --vscode-option agents=true.",
+      "Tukuk Agent does not model itself, e.g. --vscode-option enable-sandbox --vscode-option agents=true.",
   },
 }
 
@@ -709,7 +709,7 @@ export async function setDefaults(cliArgs: UserProvidedArgs, configArgs?: Config
   }
   args["proxy-domain"] = finalProxies
 
-  args["app-name"] ??= process.env.CODE_SERVER_APP_NAME || "code-server"
+  args["app-name"] ??= process.env.TUKUK_AGENT_APP_NAME || "Tukuk Agent"
 
   args._ = getResolvedPathsFromArgs(args)
 
@@ -733,10 +733,10 @@ export async function setDefaults(cliArgs: UserProvidedArgs, configArgs?: Config
  */
 export function defaultSessionSocket(userDataDir: string, platform: NodeJS.Platform = process.platform): string {
   if (platform !== "win32") {
-    return path.join(userDataDir, "code-server-ipc.sock")
+    return path.join(userDataDir, "tukuk-agent-ipc.sock")
   }
   const name = crypto.createHash("sha256").update(path.resolve(userDataDir).toLowerCase()).digest("hex").slice(0, 16)
-  return String.raw`\\.\pipe\code-server-ipc-${name}`
+  return String.raw`\\.\pipe\tukuk-agent-ipc-${name}`
 }
 
 export function getResolvedPathsFromArgs(args: UserProvidedArgs): string[] {
