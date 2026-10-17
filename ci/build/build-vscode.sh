@@ -119,7 +119,14 @@ EOF
   ) > product.json
 
 
-  VSCODE_QUALITY=stable npm run gulp compile-copilot-extension-full-build
+  # Task name differs across vscode pins: newer trees have
+  # `compile-copilot-extension-full-build`, our pinned 2a59476c only defines
+  # `compile-copilot-extension-build` (gulpfile.extensions.ts). Use whichever exists.
+  if npm run gulp --tasks 2>/dev/null | grep -q compile-copilot-extension-full-build; then
+    VSCODE_QUALITY=stable npm run gulp compile-copilot-extension-full-build
+  else
+    VSCODE_QUALITY=stable npm run gulp compile-copilot-extension-build
+  fi
 
   npm run gulp core-ci
   npm run gulp "vscode-reh-web-$VSCODE_TARGET${MINIFY:+-min}-ci"
